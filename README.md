@@ -1,5 +1,5 @@
 # api_fifo_limiter
-FIFO API Gateway - for when You can't control your developers
+FIFO API Gateway
 
 
 #### API Call to the API Gateway.
