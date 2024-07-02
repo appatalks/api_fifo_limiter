@@ -15,3 +15,9 @@ $ curl -X POST http://127.0.0.1:5000/api/save -H "Content-Type: application/json
 #### Call the record and delivery.
 
 Call ```api_fifo_delivery.sh``` at ```1 CALL``` per run.
+
+```bash
+$ bash api_fifo_delivery.sh 
+
+{ "login": "octocat", {more data}  }
+```
