@@ -44,4 +44,4 @@ def deliver_data():
         return jsonify({'status': 'error', 'message': 'No data available'}), 404
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
