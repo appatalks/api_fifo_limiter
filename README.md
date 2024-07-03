@@ -1,4 +1,4 @@
-## FIFO API Gateway
+## FIFO API Gateway Server
 
 ### Overview
 A simple FIFO API Gateway for managing API calls, storing them in MySQL, and processing in order.
