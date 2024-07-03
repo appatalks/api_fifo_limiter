@@ -25,7 +25,7 @@ dbconfig = {
     "database": DB_NAME
 }
 connection_pool = pooling.MySQLConnectionPool(pool_name="apipool",
-                                              pool_size=8000,
+                                              pool_size=32,
                                               **dbconfig)
 
 # Endpoint to save data to the database
