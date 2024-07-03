@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Fetch the data from the local API
-response=$(curl -s -X GET http://127.0.0.1:5000/api/deliver)
+response=$(curl -k -s -X GET https://127.0.0.1:5000/api/deliver)
 
 # Extract the data field from the response
 data=$(echo $response | jq -r '.data')

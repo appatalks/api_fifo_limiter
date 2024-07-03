@@ -31,18 +31,20 @@ A simple FIFO API Gateway for managing API calls, storing them in MySQL, and pro
   ```
 - Direct API to Server Endpoint
   ```bash
-  curl -X POST http://127.0.0.1:5000/api/save -H "Content-Type: application/json" -d '{"data": "example data"}'
+  curl -k -X POST https://127.0.0.1:5000/api/save -H "Content-Type: application/json" -d '{"data": "example data"}'
   ```
 - Retrieve from MySQL and Delete Data;
   ```bash
-  curl -X GET http://127.0.0.1:5000/api/deliver
+  curl -k -X GET https://127.0.0.1:5000/api/deliver
   ```
+
+(Remeber to use Valid Certificates, otherwise accept self-signed as valid with ```curl -k``` flag)
 
 ### Example: GitHub API Integration
 
 - Save GitHub API Call:
   ```bash
-  curl -X POST http://127.0.0.1:5000/api/save -H "Content-Type: application/json" -d '{"data": "{\"headers\": {\"Accept\": \"application/vnd.github+json\", \"Authorization\": \"Bearer <TOKEN>\", \"X-GitHub-Api-Version\": \"2022-11-28\"}, \"url\": \"https://git.example.com/api/v3/user\"}"}'
+  curl -k -X POST https://127.0.0.1:5000/api/save -H "Content-Type: application/json" -d '{"data": "{\"headers\": {\"Accept\": \"application/vnd.github+json\", \"Authorization\": \"Bearer <TOKEN>\", \"X-GitHub-Api-Version\": \"2022-11-28\"}, \"url\": \"https://git.example.com/api/v3/user\"}"}'
   {
   "status": "success"
   }
