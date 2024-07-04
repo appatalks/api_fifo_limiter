@@ -3,7 +3,7 @@ import mysql.connector
 
 def init_db():
     conn = mysql.connector.connect(
-        host=os.getenv('DB_HOST', 'localhost'),
+        host=os.getenv('DB_HOST', ''),
         user=os.getenv('DB_USER', 'api_gateway'),
         password=os.getenv('DB_PASSWORD', ''),
         database=os.getenv('DB_NAME', 'api_gateway_fifo')
