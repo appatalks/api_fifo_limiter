@@ -9,7 +9,9 @@ A simple FIFO API Gateway for managing API calls, storing them in MySQL, and pro
 ### Prerequisites
 - ```Python 3.x```, ```Flask```, ```MySQL```, ```pip```
 
-### Setup
+#### Instructions for Production Deployment found [Here](README_PROD.md).
+
+### Setup - Dev Environment / Small Deployment
 1. Clone Repository:
    ```bash
    git clone https://github.com/your-repo/api_fifo_limiter.git
