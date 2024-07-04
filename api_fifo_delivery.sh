@@ -13,7 +13,7 @@ api_version=$(echo $data | jq -r '.headers["X-GitHub-Api-Version"]')
 url=$(echo $data | jq -r '.url')
 
 # Make the API call to GitHub and log the response
-github_response=$(curl -s -L -H "Accept: $accept" -H "Authorization: $authorization" -H "X-GitHub-Api-Version: $api_version" $url)
+github_response=$(curl -k -s -L -H "Accept: $accept" -H "Authorization: $authorization" -H "X-GitHub-Api-Version: $api_version" $url)
 
 # Log the response to a file
 echo $github_response >> github_api_response.log
