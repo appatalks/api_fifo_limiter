@@ -15,7 +15,7 @@
 
 2. Clone Repository
    ```bash
-   git clone https://github.com/your-repo/api_fifo_limiter.git
+   git clone https://github.com/appatalks/fifo_api_gateway_server.git
    cd api_fifo_limiter/docker
    ```
 
