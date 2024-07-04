@@ -5,10 +5,10 @@ services:
   web:
     build: .
     environment:
-      DB_HOST: db
+      DB_HOST: 
       DB_USER: api_gateway
       DB_PASSWORD: your_mysql_password
       DB_NAME: api_gateway_fifo
     ports:
-      - "8443:8443"
+      - "8000:8000"
 
