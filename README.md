@@ -9,7 +9,7 @@ A simple FIFO API Gateway for managing API calls, storing them in MySQL, and pro
 ### Prerequisites
 - ```Python 3.x```, ```Flask```, ```MySQL```, ```pip```
 
-#### Instructions for Production Deployment found [Here](README_PROD.md).
+#### Instructions for Production Deployment found [Here](docker/README.md).
 
 ### Setup - Dev Environment / Small Deployment
 1. Clone Repository:
