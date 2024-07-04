@@ -85,3 +85,27 @@ A simple FIFO API Gateway for managing API calls, storing them in MySQL, and pro
   "content": "Hello! How can I assist you today?" } ... }
   ```
 
+----
+
+# Highlights
+
+## Task Queue Management
+
+### Background Processing
+- **Use Case**: Applications that need to manage background tasks.
+- **Benefit**: Ensures tasks are processed in the order they were received.
+
+### Job Scheduling
+- **Use Case**: Managing job scheduling systems.
+- **Benefit**: Ensures jobs are executed in a specific order.
+- **Example**: Regularly process queued request in-line with endpoint ```ratelimit``` gates.
+
+## Logging and Analytics
+
+### Event Logging
+- **Use Case**: Serving as an event logging system.
+- **Benefit**: Events are stored and processed in the order they occur.
+
+### Data Analytics
+- **Use Case**: Data analytics pipelines.
+- **Benefit**: Processes data in the sequence it was received to maintain temporal consistency.
