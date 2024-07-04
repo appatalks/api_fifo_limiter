@@ -12,18 +12,27 @@ A simple FIFO API Gateway for managing API calls, storing them in MySQL, and pro
 #### Instructions for Production Deployment found [Here](docker/README.md).
 
 ### Setup - Dev Environment / Small Deployment
-1. Clone Repository:
+
+1. Create a ```MySQL``` **User** and **Database** on ```MySQL 8``` or better.
+   ```mysql
+   CREATE DATABASE IF NOT EXISTS api_gateway_fifo;
+   CREATE USER IF NOT EXISTS 'api_gateway'@'%' IDENTIFIED BY 'your_mysql_password';
+   GRANT ALL PRIVILEGES ON api_gateway_fifo.* TO 'api_gateway'@'%';
+   FLUSH PRIVILEGES;
+   ```
+   
+2. Clone Repository:
    ```bash
    git clone https://github.com/appatalks/fifo_api_gateway_server.git
    cd api_fifo_limiter
    ```
 
-2. Install Dependencies:
+3. Install Dependencies:
    ```bash
    pip install flask mysql-connector-python
    ```
    
-3. Initialize MySQL Database:
+4. Initialize MySQL Database:
    ```bash
    python fifo_init.py
    ```
