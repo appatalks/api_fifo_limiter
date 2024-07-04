@@ -7,12 +7,12 @@ import logging
 app = Flask(__name__)
 
 # Load environment variables
-DB_HOST = os.getenv('DB_HOST', 'localhost')
+DB_HOST = os.getenv('DB_HOST', '')
 DB_USER = os.getenv('DB_USER', 'api_gateway')
-# DB_PASSWORD = os.getenv('DB_PASSWORD', 'your_mysql_password')
+DB_PASSWORD = os.getenv('DB_PASSWORD', '')
 DB_NAME = os.getenv('DB_NAME', 'api_gateway_fifo')
-SSL_CERT_PATH = os.getenv('SSL_CERT_PATH', '/home/lab/app/cert.pem')
-SSL_KEY_PATH = os.getenv('SSL_KEY_PATH', '/home/lab/app/key.pem')
+# SSL_CERT_PATH = os.getenv('SSL_CERT_PATH', '/home/lab/app/cert.pem')
+# SSL_KEY_PATH = os.getenv('SSL_KEY_PATH', '/home/lab/app/key.pem')
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -21,7 +21,7 @@ logging.basicConfig(level=logging.INFO)
 dbconfig = {
     "host": DB_HOST,
     "user": DB_USER,
-    # "password": DB_PASSWORD,
+    "password": DB_PASSWORD,
     "database": DB_NAME
 }
 connection_pool = pooling.MySQLConnectionPool(pool_name="apipool",
@@ -79,5 +79,6 @@ def internal_error(error):
     return jsonify({'status': 'error', 'message': 'Internal server error'}), 500
 
 if __name__ == "__main__":
-    context = (SSL_CERT_PATH, SSL_KEY_PATH)
-    app.run(debug=False, ssl_context=context)
+    # context = (SSL_CERT_PATH, SSL_KEY_PATH)
+    # app.run(debug=False, ssl_context=context)
+    app.run(debug=False)
