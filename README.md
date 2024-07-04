@@ -67,7 +67,7 @@ A simple FIFO API Gateway for managing API calls, storing them in MySQL, and pro
   {"status":"success"}
   ```
 
-  - Retrieve GitHub API Call:
+- Retrieve GitHub API Call:
   ```bash
   bash api_fifo_delivery_gpt.sh 
   { "id": "c***", "object": "chat.completion", "created": 1***, "model": "gpt-4-0613", "choices": [ { "index": 0, "message": { "role": "assistant", 
