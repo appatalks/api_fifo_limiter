@@ -1,8 +1,5 @@
 ## FIFO API Gateway Server
 
-> [!NOTE]
-> #### This project is independently maintained and is not supported by GitHub.
-
 ### Overview
 A simple FIFO API Gateway for managing API calls, storing them in MySQL, and processing in order.
 
