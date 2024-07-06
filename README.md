@@ -85,6 +85,22 @@ A simple FIFO API Gateway for managing API calls, storing them in MySQL, and pro
   "content": "Hello! How can I assist you today?" } ... }
   ```
 
+### Example: Yahoo Finance API Integration
+
+- Save Yahoo Finance API Call
+  ```bash
+  curl -X POST http://localhost:8000/api/save -H "Content-Type: application/json" -d '{"data": "{\"headers\": {\"Accept\": 
+  \"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8\", \"url\": 
+  \"https://query1.finance.yahoo.com/v8/finance/chart/AAPL?interval=1d\"}}"}'
+  {"status":"success"}
+  ```
+
+- Retrieve Yahoo Finance API Call:
+  ```bash
+  bash api_fifo_yahoo.sh
+  {"chart":{"result":[{"meta":{"currency":"USD","symbol":"AAPL" ... },
+  ```
+
 ----
 
 # Highlights
