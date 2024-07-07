@@ -1,7 +1,8 @@
 > [!WARNING]
 > WORK IN PROGRESS; В РОБОТІ
 
-- [ ] SSL
+- [x] SSL
+- [ ] Tuning
 
 #### Install
 
