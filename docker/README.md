@@ -1,7 +1,8 @@
 > [!WARNING]
 > WORK IN PROGRESS; В РОБОТІ
 
-- [ ] SSL
+- [x] SSL
+- [ ] Tuning
 
 #### Install
 
@@ -33,13 +34,12 @@
 
 2. Direct API to Server Endpoint
    ```bash
-   curl -X POST http://localhost:8000/api/save -H "Content-Type: application/json" -d '{"data": "example data"}'
+   curl -k -X POST https://<FIFO_API_SERVER>/api/save -H "Content-Type: application/json" -d '{"data": "example data"}'
    {"status":"success"}
    ```
 
 3. Retrieve from MySQL and Delete Data;
    ```bash
-   curl -X GET http://localhost:8000/api/deliver
+   curl -k -X GET https://<FIFO_API_SERVER>/api/deliver
    {"data":"example data"}
    ```
-

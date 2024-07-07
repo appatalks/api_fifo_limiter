@@ -1,4 +1,5 @@
 import os
+import ssl
 from flask import Flask, request, jsonify
 import mysql.connector
 from mysql.connector import pooling
@@ -8,11 +9,9 @@ app = Flask(__name__)
 
 # Load environment variables
 DB_HOST = os.getenv('DB_HOST', '')
-DB_USER = os.getenv('DB_USER', 'api_gateway')
+DB_USER = os.getenv('DB_USER', '')
 DB_PASSWORD = os.getenv('DB_PASSWORD', '')
-DB_NAME = os.getenv('DB_NAME', 'api_gateway_fifo')
-# SSL_CERT_PATH = os.getenv('SSL_CERT_PATH', '/home/lab/app/cert.pem')
-# SSL_KEY_PATH = os.getenv('SSL_KEY_PATH', '/home/lab/app/key.pem')
+DB_NAME = os.getenv('DB_NAME', '')
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -79,6 +78,4 @@ def internal_error(error):
     return jsonify({'status': 'error', 'message': 'Internal server error'}), 500
 
 if __name__ == "__main__":
-    # context = (SSL_CERT_PATH, SSL_KEY_PATH)
-    # app.run(debug=False, ssl_context=context)
     app.run(debug=False)
