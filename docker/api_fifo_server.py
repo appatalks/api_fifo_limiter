@@ -1,5 +1,4 @@
 import os
-import ssl
 from flask import Flask, request, jsonify
 import mysql.connector
 from mysql.connector import pooling

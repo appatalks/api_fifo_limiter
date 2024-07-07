@@ -32,7 +32,7 @@ COPY . .
 # Potential Safe-Cleanup required.
 RUN rm -fr /home/lab/app/*pem /home/lab/app/logs
 
-# Set permissions for the certificate files
+# Set permissions
 RUN chown -R lab:lab /home/lab
 
 # Switch to non-root user
