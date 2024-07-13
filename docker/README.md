@@ -20,26 +20,29 @@
    cd api_fifo_limiter/docker
    ```
 
-3. Adjust ```DB_HOST``` and ```DB_PASSWORD``` accordingly in the following files:
-   - fifo_init.py
-   - api_fifo_server.py
-   - docker-compose.yml
+3. Adjust ```.env``` to set environment variables
 
 #### Usage:
 
 1. Start Server
    ```bash
-   docker-compose up --build
+   bash run.sh
    ```
 
 2. Direct API to Server Endpoint
    ```bash
    curl -k -X POST https://<FIFO_API_SERVER>/api/save -H "Content-Type: application/json" -d '{"data": "example data"}'
-   {"status":"success"}
+   {"message":"Message enqueued: x_id=39-20240713141928","status":"success"}
    ```
 
-3. Retrieve from MySQL and Delete Data;
+3. Retrieve from FIFO Queue and Delete Data
    ```bash
    curl -k -X GET https://<FIFO_API_SERVER>/api/deliver
+   {"data":"example data"}
+   ```
+   
+4. Optional Target by Message ID to bypass queue:
+   ```bash
+   curl -k -X GET https://<FIFO_API_SERVER>/api/deliver?x_id=39-20240713141928
    {"data":"example data"}
    ```
