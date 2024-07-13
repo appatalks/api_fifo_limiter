@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Run docker-compose build and redirect output to build.log and stdout
+mkdir -p logs
 docker-compose build 2>&1 | tee logs/build.log
 
 # Check the status of the build
