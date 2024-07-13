@@ -18,6 +18,7 @@ DB_HOST = os.getenv('DB_HOST')
 DB_USER = os.getenv('DB_USER')
 DB_PASSWORD = os.getenv('DB_PASSWORD')
 DB_NAME = os.getenv('DB_NAME')
+ALLOWED_IPS = os.getenv('ALLOWED_IPS')
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -32,9 +33,6 @@ dbconfig = {
 connection_pool = pooling.MySQLConnectionPool(pool_name="apipool",
                                               pool_size=32,
                                               **dbconfig)
-
-# List of allowed IPs
-ALLOWED_IPS = ['127.0.0.1', '172.12.0.1', '192.168.0.1', 'localhost']  # Replace with actual allowed IP addresses
 
 def ip_restricted(f):
     @wraps(f)
