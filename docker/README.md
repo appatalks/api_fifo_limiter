@@ -46,4 +46,3 @@
    curl -k -X GET https://<FIFO_API_SERVER>/api/deliver?x_id=39-20240713141928
    {"data":"example data"}
    ```
-   
