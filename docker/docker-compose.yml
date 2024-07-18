@@ -1,8 +1,9 @@
 version: '3.3'
 services:
   flask:
+    # network_mode: host # Enable networking with host
     build: 
-      context: .
+      context: . 
       dockerfile: Dockerfile.flask
     environment:
       FLASK_APP: api_fifo_server.py
