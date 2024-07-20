@@ -1,4 +1,7 @@
 import os
+import hashlib
+import base64
+import time
 from flask import Flask, request, jsonify
 import mysql.connector
 from mysql.connector import pooling
@@ -57,8 +60,16 @@ def save_data():
 
         # Get the last inserted ID and the current timestamp
         cursor.execute('SELECT LAST_INSERT_ID(), NOW()')
-        last_id, timestamp = cursor.fetchone()
-        identifier = f"{last_id}-{timestamp.strftime('%Y%m%d%H%M%S')}"
+        last_id = cursor.fetchone()[0]
+
+        # Get the current EPOCH time
+        epoch_time = int(time.time())
+
+        # Generate a 7-character salt
+        salt = base64.urlsafe_b64encode(os.urandom(16)).decode('utf-8')[:7]
+
+        # Create the identifier
+        identifier = f"{last_id}-{epoch_time}-{salt}"
 
         return jsonify({'status': 'success', 'message': f'Message enqueued: x_id={identifier}'}), 202
     except mysql.connector.Error as err:
@@ -80,7 +91,8 @@ def deliver_data():
 
         if x_id:
             # Extract ID from the x_id
-            record_id, _ = x_id.split('-')
+            parts = x_id.split('-')
+            record_id = parts[0]  # The ID is the first part
             cursor.execute('SELECT * FROM api_calls WHERE id = %s', (record_id,))
         else:
             cursor.execute('SELECT * FROM api_calls ORDER BY timestamp ASC LIMIT 1')
