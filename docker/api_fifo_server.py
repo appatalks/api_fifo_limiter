@@ -113,6 +113,49 @@ def deliver_data():
         cursor.close()
         conn.close()
 
+# Endpoint to log the response for a given x_id
+# @app.route('/api/xlog', methods=['POST'])
+# def xlog_response():
+# PLACEHOLDER
+
+
+@app.route('/api/status', methods=['GET'])
+def get_status():
+    x_id = request.args.get('x_id')
+    if not x_id:
+        return jsonify({'status': 'error', 'message': 'x_id is required'}), 400
+
+    try:
+        conn = connection_pool.get_connection()
+        cursor = conn.cursor(dictionary=True)
+
+        # Check if the response for the x_id is already logged
+        # PLACEHOLDER
+        
+        # If not delivered, check the queue position
+        parts = x_id.split('-')
+
+        record_id = parts[0]  # The ID is the first part
+        cursor.execute('SELECT id FROM api_calls WHERE id = %s', (record_id,))
+        call_row = cursor.fetchone()
+
+        cursor.execute('SELECT COUNT(*) AS queue_position FROM api_calls WHERE id <= %s', (record_id,))
+        position_row = cursor.fetchone()
+        if position_row is None:
+            return jsonify({'status': 'queued', 'queue_position': 0}), 200
+
+        queue_position = position_row['queue_position']
+
+        return jsonify({'status': 'queued', 'queue_position': queue_position}), 200
+    
+    except mysql.connector.Error as err:
+        logging.error(f"Error: {err}")
+        return jsonify({'status': 'error', 'message': 'Database error'}), 500
+    finally:
+        cursor.close()
+        conn.close()
+
+
 # Custom error handler
 @app.errorhandler(404)
 def not_found_error(error):
